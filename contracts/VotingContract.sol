@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract Voting {
+contract VotingContract {
     struct Candidate {
         string name;
         uint256 voteCount;
@@ -19,13 +19,10 @@ contract Voting {
         }
     }
 
-    function vote(uint256 _candidateIndex) public {
-        require(!voters[msg.sender], "You have already voted.");
-        require(_candidateIndex < candidates.length, "Invalid candidate index.");
-
-        voters[msg.sender] = true;
-        candidates[_candidateIndex].voteCount++;
-    }
+    function registerVoter() public {
+    require(!voters[msg.sender], "You have already registered.");
+    voters[msg.sender] = true;
+}
 
     function getWinner() public view returns (string memory winnerName) {
         uint256 winningVoteCount = 0;
