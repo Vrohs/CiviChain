@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 contract VotingContract {
     struct Candidate {
         string name;
-        uint256 voteCount;
+        uint256 voteCount;    // unsigned c-like 256 bit integer var 
     }
 
     mapping(address => bool) public voters;
