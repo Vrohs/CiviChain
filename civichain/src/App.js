@@ -6,7 +6,7 @@ import VoterRegistration from './components/VoterRegistration';
 import CandidateList from './components/CandidateList';
 import VotingInterface from './components/VotingInterface';
 import ResultsSection from './components/ResultsSection';
-import VotingContractABI from '../QuadraticVotingContract.json';
+import VotingContractABI from './QuadraticVotingContract.json';
 
 import './App.css';
 
