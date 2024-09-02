@@ -62,3 +62,30 @@ contract VotingContract {
         hasVoted[msg.sender] = true;
     }
 
+
+    function getVoteCount(uint256 _candidateIndex) public view returns (uint256) {
+
+        require(_candidateIndex < candidates.length, "Invalid candidate index");
+        return candidates[_candidateIndex].voteCount;
+    }
+
+
+    function endVoting() public onlyOwner {
+
+        votingEnded = true;
+    }
+
+
+    function getWinner() public view returns (string memory winnerName) {
+
+        require(votingEnded, "Voting has not ended yet");
+        uint256 winningVoteCount = 0;
+
+        for (uint256 i = 0; i < candidates.length; i++) {
+            if (candidates[i].voteCount > winningVoteCount) {
+                winningVoteCount = candidates[i].voteCount;
+                winnerName = candidates[i].name;
+            }
+        }
+    }
+}
