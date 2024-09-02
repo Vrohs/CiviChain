@@ -16,10 +16,10 @@ function App() {
   useEffect(() => {
     const init = async () => {
       if (window.ethereum) {
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const provider = new ethers.BrowserProvider(window.ethereum);
         setProvider(provider);
         
-        const signer = provider.getSigner();
+        const signer = await provider.getSigner();
         setSigner(signer);
 
         // Replace with your contract address and ABI
