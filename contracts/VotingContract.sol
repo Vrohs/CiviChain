@@ -82,17 +82,3 @@ contract QuadraticVotingContract {
         votingEnded = true;
     }
 
-
-    function getWinner() public view returns (string memory winnerName) {
-
-        require(votingEnded, "Voting has not ended yet");
-        uint256 winningVoteCount = 0;
-
-        for (uint256 i = 0; i < candidates.length; i++) {
-            if (candidates[i].voteCount > winningVoteCount) {
-                winningVoteCount = candidates[i].voteCount;
-                winnerName = candidates[i].name;
-            }
-        }
-    }
-}
