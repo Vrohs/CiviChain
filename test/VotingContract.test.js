@@ -44,7 +44,7 @@ describe("QuadraticVotingContract", function () {
       await quadraticVotingContract.connect(addr1).registerVoter();
       await quadraticVotingContract.connect(addr1).castVote(0, 3); // Vote strength of 3
       expect(await quadraticVotingContract.getVoteCount(0)).to.equal(3);
-      expect(await quadraticVotingContract.getRemainingCredits(addr1.address)).to.equal(91); // 100 - 3^2
+      expect(await quadraticVotingContract.connect(addr1).getRemainingCredits()).to.equal(91); // 100 - 3^2
     });
 
     it("Should not allow an unregistered voter to cast a vote", async function () {
