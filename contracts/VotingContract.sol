@@ -97,3 +97,4 @@ contract QuadraticVotingContract {
             }
         }
     }
+}
