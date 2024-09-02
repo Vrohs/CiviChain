@@ -6,6 +6,8 @@ import VoterRegistration from './components/VoterRegistration';
 import CandidateList from './components/CandidateList';
 import VotingInterface from './components/VotingInterface';
 import ResultsSection from './components/ResultsSection';
+import VotingContractABI from '../QuadraticVotingContract.json';
+
 import './App.css';
 
 function App() {
@@ -23,8 +25,8 @@ function App() {
         setSigner(signer);
 
         // Replace with your contract address and ABI
-        const contractAddress = "YOUR_CONTRACT_ADDRESS";
-        const contractABI = []; // Your contract ABI
+        const contractAddress = "VotingContractABI";
+        const contractABI = VotingContractABI.abi; 
         const contract = new ethers.Contract(contractAddress, contractABI, signer);
         setContract(contract);
       }
