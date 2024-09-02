@@ -1,6 +1,7 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
+
 describe("VotingContract", function () {
   let VotingContract;
   let votingContract;
@@ -9,8 +10,10 @@ describe("VotingContract", function () {
   let addr2;
   let addrs;
 
+
   beforeEach(async function () {
-    // Get the ContractFactory and Signers here.
+
+    // Get the ContractFactory and Signers.
     VotingContract = await ethers.getContractFactory("VotingContract");
     [owner, addr1, addr2, ...addrs] = await ethers.getSigners();
 
@@ -18,6 +21,7 @@ describe("VotingContract", function () {
     const candidateNames = ["Candidate 1", "Candidate 2", "Candidate 3"];
     votingContract = await VotingContract.deploy(candidateNames);
   });
+
 
   describe("Deployment", function () {
     it("Should set the right owner", async function () {
@@ -48,9 +52,11 @@ describe("VotingContract", function () {
       expect(await votingContract.getVoteCount(0)).to.equal(1);
     });
 
+
     it("Should not allow an unregistered voter to cast a vote", async function () {
       await expect(votingContract.connect(addr1).castVote(0)).to.be.revertedWith("You must be registered to vote");
     });
+
 
     it("Should not allow a voter to vote twice", async function () {
       await votingContract.connect(addr1).registerVoter();
@@ -58,11 +64,13 @@ describe("VotingContract", function () {
       await expect(votingContract.connect(addr1).castVote(1)).to.be.revertedWith("You have already voted");
     });
 
+
     it("Should not allow voting for a non-existent candidate", async function () {
       await votingContract.connect(addr1).registerVoter();
       await expect(votingContract.connect(addr1).castVote(3)).to.be.revertedWith("Invalid candidate index");
     });
   });
+
 
   describe("End Voting", function () {
     it("Should allow only the owner to end voting", async function () {
