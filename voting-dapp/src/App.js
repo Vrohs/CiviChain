@@ -5,13 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 // Import your contract ABI
-import VotingContractABI from './VotingContract.json';
+import VotingContractABI from './QuadraticVotingContract.json';
 
 const contractAddress = "YOUR_CONTRACT_ADDRESS_HERE";
 
 function App() {
   const [contract, setContract] = useState(null);
-  const [account, setAccount] = useState(null);
+  const [account, setAccount] = useState(null); 
   const [candidates, setCandidates] = useState([]);
   const [isRegistered, setIsRegistered] = useState(false);
 
